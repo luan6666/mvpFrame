@@ -1,29 +1,33 @@
 package com.example.luan8.mvpframe.mvp.p;
 
+import com.example.luan8.mvpframe.mvp.m.BaseModel;
 import com.example.luan8.mvpframe.mvp.v.BaseView;
 
-import org.reactivestreams.Subscriber;
 
-import java.util.Observable;
+public interface BasePresenter<M extends BaseModel, V extends BaseView> {
+    /**
+     * 注册Model层
+     *
+     * @param model
+     */
+    void registerModel(M model);
 
-import io.reactivex.disposables.CompositeDisposable;
-import io.reactivex.disposables.Disposable;
+    /**
+     * 注册View层
+     *
+     * @param view
+     */
+    void registerView(V view);
 
-public class BasePresenter implements MyPresenter {
-    private CompositeDisposable disposables;
-    @Override
-    public void add(Disposable disposable) {
-        if(null == disposable){
-            disposables = new CompositeDisposable();
+    /**
+     * 获取View
+     *
+     * @return
+     */
+    V getView();
 
-        }
-        disposables.add(disposable);
-    }
-
-    @Override
-    public void clear() {
-        if(null != disposables&&disposables.isDisposed()){
-            disposables.clear();
-        }
-    }
+    /**
+     * 销毁动作（如Activity、Fragment的卸载）
+     */
+    void destroy();
 }

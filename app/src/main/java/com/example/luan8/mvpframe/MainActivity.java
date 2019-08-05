@@ -1,12 +1,12 @@
 package com.example.luan8.mvpframe;
 
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
-import com.example.luan8.mvpframe.mvp.p.MessagePresenter;
-import com.example.luan8.mvpframe.mvp.v.SendMessageView;
+import com.example.luan8.mvpframe.bean.MessageBean;
+import com.example.luan8.mvpframe.mvp.p.MainPresenter;
+import com.example.luan8.mvpframe.mvp.v.MainView;
 
-public class MainActivity extends BaseActivity<MessagePresenter> implements SendMessageView {
+public class MainActivity extends BaseActivity<MessageBean,MainView,MainPresenter> implements MainView{
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -14,10 +14,6 @@ public class MainActivity extends BaseActivity<MessagePresenter> implements Send
         setContentView(R.layout.activity_main);
     }
 
-    @Override
-    protected void initData() {
-
-    }
 
     @Override
     public void showLoading() {
@@ -26,6 +22,26 @@ public class MainActivity extends BaseActivity<MessagePresenter> implements Send
 
     @Override
     public void hideLoading() {
+
+    }
+
+    @Override
+    public MessageBean createModel() {
+        return null;
+    }
+
+    @Override
+    public MainView createView() {
+        return null;
+    }
+
+    @Override
+    public MainPresenter createPresenter() {
+        return null;
+    }
+
+    @Override
+    public void setData() {
 
     }
 }
